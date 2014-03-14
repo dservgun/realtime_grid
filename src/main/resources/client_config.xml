@@ -1,0 +1,7 @@
+<SmartFoxClient>
+    <ip>64.22.81.244</ip>
+    <port>9339</port>
+    <zone>realtime_grid</zone>
+    <debug>true</debug>
+    <smartConnect>false</smartConnect>
+</SmartFoxClient>

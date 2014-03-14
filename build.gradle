@@ -1,0 +1,47 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.6
+version = '1.0'
+
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart', 'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group:'commons-collections', name: 'commons-collections', version: '3.2'
+    compile group:'org.apache.mina', name:'mina-core', version:'2.0.1'
+
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+
+test {
+    systemProperties 'property': 'value'
+}
+
+uploadArchives {
+    repositories {
+       flatDir(dirs: file('repos'))
+    }
+}
+
+task createProjectStructure{
+  classesDir = "build/classes";
+  sourceDir = "src/main/java";
+  resourceDir = "src/main/resources";
+  testDir = "test/main/java";
+  libDir = "build/libs";
+  for (i in [classesDir, sourceDir, resourceDir, testDir, libDir]){
+    file = new File(i);
+    file.mkdirs();
+  }
+}
+

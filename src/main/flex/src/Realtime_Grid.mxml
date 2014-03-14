@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+				layout="absolute" 
+				creationComplete="main()" height="800" width="1024">
+	
+	<!--
+		SmartFoxClient Actionscript 3.0 MXML template
+		version 1.0.0
+		
+		(c) 2004-2007 gotoAndPlay()
+		www.smartfoxserver.com
+		www.gotoandplay.it
+	-->
+	
+	<!-- import main script file -->
+	<mx:Script source="main.as" />
+      <mx:Binding source="dealGrid.dataProvider as ArrayCollection"
+     destination="deals" />
+  <!--mx:Binding source="dealGrid.selectedItems" destination="riskDataData" /-->
+     <mx:Panel x="0" y="0" width="100%" height="289"
+     layout="absolute" title="Market Data">
+    <mx:DataGrid x="0" y="0" height="289" width="300"
+       rowCount="4" dataProvider="{marketDataData}" >
+      <mx:columns>
+        <mx:DataGridColumn headerText="Tenure" dataField="tenure"/>
+        <mx:DataGridColumn headerText="Rate" dataField="rate"/>
+      </mx:columns>
+    </mx:DataGrid>
+    <mx:DataGrid x="350" y="0" height="289" width="65%"
+       rowCount="4" dataProvider="{riskDataData}">
+      <mx:columns>
+        <mx:DataGridColumn headerText="Risk1" dataField="name"/>
+        <mx:DataGridColumn headerText="Risk2" dataField="someVal"/>
+        <mx:DataGridColumn headerText="Risk2" dataField="note"/>
+      </mx:columns>
+    </mx:DataGrid>
+  </mx:Panel>
+  <mx:Panel x="0" y="300" width="100%" height="100%"
+     layout="absolute" title="Dealer Deals">
+      <mx:DataGrid id="dealGrid" x="0" y="0" height="289" width="65%"
+       rowCount="4" dataProvider="{deals}" sortableColumns="false" editable="true"
+              itemEditBeginning="{checkEdit(event)}" itemEditEnd="editEnd(event)">
+      <mx:columns>
+        <mx:DataGridColumn headerText="DealParam1" dataField="name"/>
+        <mx:DataGridColumn headerText="DealParam2" dataField="someVal"/>
+        <mx:DataGridColumn headerText="DealParam3" dataField="note"/>
+      </mx:columns>
+    </mx:DataGrid>
+  </mx:Panel>
+</mx:Application>
